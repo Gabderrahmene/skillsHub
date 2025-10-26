@@ -1,4 +1,29 @@
-progress[value] {
-    width: 80%;
-    height: 50px;
+button {
+    width: 20%;
+    background: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    word-wrap: break-word
+}
+
+h3,
+.description,
+.reste {
+    text-align: left;
+}
+
+.reste {
+    color: #9b9b9b;
+}
+
+.progress-bar {
+    height: 20px;
+    background: white;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, coral, orange);
 }

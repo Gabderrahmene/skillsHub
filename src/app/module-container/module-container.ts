@@ -11,7 +11,8 @@ export class ModuleContainer {
   module: Module = {
     id: "1",
     title: "PAWEB",
-    progres: 1 / 15,
-    description: "i am in pain please help i am begging you"
+    progres: 13,
+    size: 16,
+    description: "i am in pain please help i am begging you dsqhidsqgidsqog dgsqiygyqisgyq  sqdygigodsqiyg  dsqyigodsqiyg"
   };
 }
