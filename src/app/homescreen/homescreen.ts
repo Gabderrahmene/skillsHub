@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ModuleContainer } from "../module-container/module-container";
 
 @Component({
   selector: 'app-homescreen',
-  imports: [],
+  imports: [ModuleContainer],
   templateUrl: './homescreen.html',
   styleUrl: './homescreen.css',
 })
