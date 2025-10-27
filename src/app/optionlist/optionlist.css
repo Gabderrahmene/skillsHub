@@ -1,7 +1,8 @@
 nav {
     border: hidden;
     border-right: solid rgb(245, 136, 64) 3px;
-    width: 10%;
+    flex-basis: 10%;
+    flex-grow: 0;
     height: 100vh;
 
 }

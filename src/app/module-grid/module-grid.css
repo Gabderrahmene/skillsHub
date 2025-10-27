@@ -1,6 +1,11 @@
+h2 {
+    padding: 20px 10px;
+}
+
 div {
     display: grid;
-    width: 40%;
+    flex-basis: 40%;
+    flex-grow: 0;
     gap: 10px;
     grid-template-columns: 1fr 1fr;
 }
