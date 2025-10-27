@@ -5,7 +5,7 @@ import { Optionlist } from "../optionlist/optionlist";
 @Component({
   selector: 'app-homescreen',
 
-  imports: [ModuleGrid, Optionlist],
+  imports: [ModuleGrid],
 
   templateUrl: './homescreen.html',
   styleUrl: './homescreen.css',
