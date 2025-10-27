@@ -3,7 +3,7 @@ import { ModuleContainer } from "../module-container/module-container";
 
 @Component({
   selector: 'app-homescreen',
-  imports: [ModuleContainer],
+  imports: [ModuleContainer, ],
   templateUrl: './homescreen.html',
   styleUrl: './homescreen.css',
 })
