@@ -1,9 +1,17 @@
-button {
-    width: 20%;
+article {
+    border: 2px solid black;
     background: white;
     border-radius: 10px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     word-wrap: break-word
+}
+
+button {
+    cursor: pointer;
+    background-color: white;
+    border: hidden;
+    color: orange;
+    font-size: medium;
 }
 
 h3,
@@ -17,6 +25,7 @@ h3,
 }
 
 .progress-bar {
+    border: solid black 1px;
     height: 20px;
     background: white;
     border-radius: 100px;

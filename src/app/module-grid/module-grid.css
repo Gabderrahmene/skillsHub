@@ -1,0 +1,6 @@
+div {
+    display: grid;
+    width: 40%;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
