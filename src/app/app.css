@@ -1,0 +1,5 @@
+div {
+    gap: 1%;
+    display: flex;
+    justify-content: start;
+}
