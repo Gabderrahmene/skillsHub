@@ -13,10 +13,11 @@ img{
 }
 header{
     background-color: rgb(243, 239, 231);
+    display:flex;
+     justify-content: space-between;
 }
-div{
-    display: inline-block;
+
+h3{
+color:  rgb(245, 136, 64);
 }
-.search{
-   float:right;
-}
+

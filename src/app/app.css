@@ -3,3 +3,9 @@ div {
     display: flex;
     justify-content: start;
 }
+app-dashboard{
+    display:flex;
+    justify-content: flex-end;
+    width:100vh;
+    position: absolute;
+}
