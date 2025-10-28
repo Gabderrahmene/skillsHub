@@ -1,4 +1,4 @@
-input{
+input {
     color: orange;
     border-color: orangered;
     padding: 2px;
@@ -7,17 +7,18 @@ input{
     margin-bottom: 10px;
     text-align: center;
 }
-img{
+
+img {
     width: 30px;
-   vertical-align: middle;
-}
-header{
-    background-color: rgb(243, 239, 231);
-    display:flex;
-     justify-content: space-between;
+    vertical-align: middle;
 }
 
-h3{
-color:  rgb(245, 136, 64);
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
 }
 
+h3 {
+    color: rgb(245, 136, 64);
+}
