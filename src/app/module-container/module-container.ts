@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Module } from '../module';
 
 @Component({
@@ -8,11 +8,17 @@ import { Module } from '../module';
   styleUrl: './module-container.css',
 })
 export class ModuleContainer {
-  module: Module = {
-    id: "1",
-    title: "PAWEB",
-    progres: 13,
-    size: 16,
-    description: "i am in pain please help i am begging you dsqhidsqgidsqog dgsqiygyqisgyq  sqdygigodsqiyg  dsqyigodsqiyg"
-  };
+  id = input<string>("");
+  title = input("", { transform: truncate });
+  description = input<string>("");
+  progres = input<number>(0);
+  size = input<number>(10);
+
+}
+function truncate(value: string): string {
+  value = value.trim();
+  if (value.length > 20) {
+    value = value.substring(0, 20) + "...";
+  }
+  return value;
 }

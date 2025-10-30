@@ -1,11 +1,13 @@
-h2 {
-    padding: 20px 10px;
+section {
+    flex: 1;
 }
 
 div {
     display: grid;
-    flex-basis: 40%;
-    flex-grow: 0;
-    gap: 10px;
-    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 40%);
+}
+
+h2 {
+    padding: 20px 10px;
 }

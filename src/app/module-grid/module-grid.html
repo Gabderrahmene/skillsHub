@@ -1,10 +1,9 @@
-<h2>Continue Learning</h2>
-<div>
-    <app-module-container></app-module-container>
-    <app-module-container></app-module-container>
-    <app-module-container></app-module-container>
-    <app-module-container></app-module-container>
-    <app-module-container></app-module-container>
-    <app-module-container></app-module-container>
-    <app-module-container></app-module-container>
-</div>
+<section>
+    <h2>Continue Learning</h2>
+    <div>
+        @for (module of modules; track $index) {
+        <app-module-container [title]="module.title" [description]="module.description" [size]="module.size"
+            [progres]="module.progres"></app-module-container>
+        }
+    </div>
+</section>

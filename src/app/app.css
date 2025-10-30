@@ -3,3 +3,7 @@
     display: flex;
     justify-content: start;
 }
+
+.dashboard {
+    flex: 3
+}

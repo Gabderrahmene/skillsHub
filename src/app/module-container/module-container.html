@@ -1,9 +1,13 @@
 <article>
-    <h3>{{module.title}}</h3>
-    <p class="description">{{module.description}}</p>
-    <div class="progress-bar">
-        <div class="progress-fill" [style.width.%]="module.progres/module.size * 100"></div>
+    <h3>{{title()}}</h3>
+
+    <div class="description-container">
+        <p class="description">{{description()}}</p>
     </div>
-    <p class="reste">{{module.progres}}/{{module.size}} </p>
+
+    <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="progres()/size() * 100"></div>
+    </div>
+    <p class="reste">{{progres()}}/{{size()}} </p>
     <button>continue module</button>
 </article>
