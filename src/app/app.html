@@ -1,8 +1,9 @@
-<div class="menu">
-    <app-optionlist></app-optionlist>
-    <div class="dashboard">
+<mat-sidenav-container autosize>
+    <mat-sidenav #sidenav mode="over" opened>
+        <app-optionlist></app-optionlist>
+    </mat-sidenav>
+    <mat-sidenav-content>
         <app-dashboard></app-dashboard>
         <app-homescreen></app-homescreen>
-    </div>
-
-</div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

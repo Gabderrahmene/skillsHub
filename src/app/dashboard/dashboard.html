@@ -1,9 +1,14 @@
-<header>
-    <div>
-        <h3>Dashboard</h3>
-    </div>
-    <div class="search">
-        <img src="search.png" alt="">
-        <input type="search">
-    </div>
-</header>
+<mat-toolbar>
+    <button matIconButton (click)="toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Dashboard</span>
+    <span class="spacer"></span>
+
+    <button matIconButton>
+        <mat-icon>search</mat-icon>
+    </button>
+
+
+
+</mat-toolbar>

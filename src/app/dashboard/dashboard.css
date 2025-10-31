@@ -1,6 +1,6 @@
 input {
     color: orange;
-    border-color: orangered;
+    border-color: coral;
     padding: 2px;
     display: inline;
     border-radius: 10px;
@@ -8,17 +8,6 @@ input {
     text-align: center;
 }
 
-img {
-    width: 30px;
-    vertical-align: middle;
-}
-
-header {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-}
-
-h3 {
-    color: rgb(245, 136, 64);
+.spacer {
+    flex: 1 1 auto;
 }
