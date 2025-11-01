@@ -11,7 +11,7 @@ export class ModuleContainer {
   id = input<string>("");
   title = input("", { transform: truncate });
   description = input<string>("");
-  progres = input<number>(0);
+  progress = input<number>(0);
   size = input<number>(10);
 
 }

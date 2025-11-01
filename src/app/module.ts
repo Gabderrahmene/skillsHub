@@ -1,7 +1,7 @@
 export interface Module {
     id: string;
     title: string;
-    progres: number;
+    progress: number;
     size: number;
     description: string;
 }
