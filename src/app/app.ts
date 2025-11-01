@@ -4,9 +4,10 @@ import { Optionlist } from './optionlist/optionlist';
 import { Dashboard } from "./dashboard/dashboard";
 import { MatSidenav, MatSidenavModule } from "@angular/material/sidenav";
 import { Sidenav } from './sidenav';
+import { RouterOutlet } from "@angular/router";
 @Component({
   selector: 'app-root',
-  imports: [Homescreen, Optionlist, Dashboard, MatSidenavModule],
+  imports: [Homescreen, Optionlist, Dashboard, MatSidenavModule, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

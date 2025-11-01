@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-
+import { RouterModule, Routes,RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-optionlist',
-  imports: [MatIconModule],
+  imports: [MatIconModule,RouterModule,RouterLink],
   templateUrl: './optionlist.html',
   styleUrl: './optionlist.css',
 })
@@ -13,4 +13,5 @@ export class Optionlist {
   toggleMenu() {
     this.isExpanded = !this.isExpanded;
   }
+ 
 }
