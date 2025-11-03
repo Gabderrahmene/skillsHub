@@ -1,12 +1,14 @@
 <div class="logincase">
-    <form [formGroup]="loginForm">
-<div id="inputat"><div class="inputs">
-    <img src="login1.png" alt="">
-    <input type="text" required class="input" placeholder="username" formControlName="username"><br>
-    </div>
-    <div class="inputs"><img src="lock.png" alt="">
-<input type="password" required class="input" placeholder="password" formControlName="password"><br>
-</div></div>
-<input type="submit" id="submit">
-</form>
+    <form [formGroup]="loginForm" (ngSubmit)="login_now()">
+        <div id="inputat">
+            <div class="inputs">
+                <img src="login1.png" alt="">
+                <input type="text" required class="input" placeholder="username" formControlName="username"><br>
+            </div>
+            <div class="inputs"><img src="lock.png" alt="">
+                <input type="password" required class="input" placeholder="password" formControlName="password"><br>
+            </div>
+        </div>
+        <input type="submit" id="submit">
+    </form>
 </div>

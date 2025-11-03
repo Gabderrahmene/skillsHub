@@ -3,6 +3,7 @@ import { ModuleContainer } from "../module-container/module-container";
 import { Module } from '../module';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth';
 
 @Injectable({ providedIn: 'root' })
 
@@ -20,6 +21,8 @@ export class ModuleGrid implements OnInit, OnDestroy {
 
   subs = new Subscription();
   http = inject(HttpClient);
+  auth = inject(AuthService);
+  studentId = 3;
   ngOnInit(): void {
     this.loadModules();
   }
@@ -31,9 +34,8 @@ export class ModuleGrid implements OnInit, OnDestroy {
   loadModules(): void {
     this.loading = true;
     this.error = null;
-
-    const url = `${this.base}/test.php`;
-    const s = this.http.get<any[]>(url).subscribe({
+    const url = `${this.base}/module_grid.php?student=${this.studentId}`;
+    const s = this.http.get<any[]>(url, { withCredentials: true }).subscribe({
       next: data => {
         this.modules = (Array.isArray(data) ? data : []).map((m: any) => ({
           id: m.id_module,
