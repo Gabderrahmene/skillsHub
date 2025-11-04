@@ -23,11 +23,8 @@ if (!$user || !password_verify($password, $user['password'])) {
 session_regenerate_id(true);
 
 
-$_SESSION['user'] = [
-    'id' => (int) $user['id_student'],
-    'email' => $email,
-];
-
+$_SESSION['user'] = (int) $user['id_student'];
+$_SESSION['email'] = $email;
 
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -36,5 +33,6 @@ if (empty($_SESSION['csrf_token'])) {
 
 send_json([
     'user' => $_SESSION['user'],
+    'email' => $_SESSION['email'],
     'csrf_token' => $_SESSION['csrf_token']
 ]);

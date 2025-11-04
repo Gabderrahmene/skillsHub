@@ -2,13 +2,12 @@
 require 'config.php';
 
 $_SESSION = [];
-
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(
-        session_name(),
+        "skills_hub_session",
         '',
-        time() - 42000,
+        time() - 86401,
         $params['path'],
         $params['domain'],
         $params['secure'],

@@ -10,7 +10,7 @@ if ($method === 'GET') {
         send_json(['error' => 'student id required'], 400);
 
 
-    if ($user['id'] !== $sid && $user['role'] !== 'admin') {
+    if ($user !== $sid) {
         send_json(['error' => 'Forbidden'], 403);
     }
 
