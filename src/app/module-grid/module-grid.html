@@ -3,9 +3,6 @@
     @if (loading) {
     <div>wili wili rani nloadi</div>
     }
-    @if (error) {
-    <div>{{ error }}</div>
-    }
     <div>
         @for (module of modules; track $index) {
         <app-module-container [title]="module.title" [description]="module.description" [size]="module.size"

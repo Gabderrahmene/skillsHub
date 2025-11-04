@@ -3,7 +3,9 @@ import { ModuleContainer } from "../module-container/module-container";
 import { Module } from '../module';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../auth';
+import { environment } from '../../environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 
@@ -14,15 +16,14 @@ import { AuthService } from '../auth';
   styleUrl: './module-grid.css',
 })
 export class ModuleGrid implements OnInit, OnDestroy {
-  modules: Module[] = []
-  loading = false;
-  error: string | null = null;
-  base = 'http://localhost/skillshub';
-
-  subs = new Subscription();
-  http = inject(HttpClient);
-  auth = inject(AuthService);
-  studentId = 3;
+  public modules: Module[] = []
+  public loading = false;
+  private router = inject(Router);
+  private base = environment.apiUrl;
+  private snackBar = inject(MatSnackBar);
+  private subs = new Subscription();
+  private http = inject(HttpClient);
+  private studentId = localStorage.getItem('user');
   ngOnInit(): void {
     this.loadModules();
   }
@@ -33,7 +34,6 @@ export class ModuleGrid implements OnInit, OnDestroy {
 
   loadModules(): void {
     this.loading = true;
-    this.error = null;
     const url = `${this.base}/module_grid.php?student=${this.studentId}`;
     const s = this.http.get<any[]>(url, { withCredentials: true }).subscribe({
       next: data => {
@@ -46,7 +46,31 @@ export class ModuleGrid implements OnInit, OnDestroy {
         }));
       },
       error: err => {
-        this.error = err?.message ?? `Failed to load modules (status ${err?.status ?? '??'})`;
+        if (err.status == 401) {
+          this.snackBar.open("you are not authentificated", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        }
+        else if (err.status == 403) {
+          this.snackBar.open("the id cookie was changed", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        } else {
+          this.snackBar.open("man idk", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        }
+        this.router.navigate(["login"]);
+        this.loading = false;
         this.modules = [];
       },
       complete: () => {

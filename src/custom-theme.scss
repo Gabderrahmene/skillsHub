@@ -30,3 +30,21 @@ body {
   // Reset the user agent margin.
   margin: 0;
 }
+
+.success-snackbar {
+  @include mat.snack-bar-overrides((button-color: green,
+      container-color: white,
+      supporting-text-color:green,
+    ));
+  border: 2px solid green;
+  border-radius: 5px;
+}
+
+.error-snackbar {
+  @include mat.snack-bar-overrides((button-color: red,
+      container-color: white,
+      supporting-text-color:red,
+    ));
+  border: 2px solid red;
+  border-radius: 5px;
+}
