@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule, RouterLink, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthService } from '../auth';
+import { AuthService } from '../../services/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-optionlist',

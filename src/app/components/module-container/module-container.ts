@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Module } from '../module';
+import { Module } from '../../interfaces/module';
 
 @Component({
   selector: 'app-module-container',

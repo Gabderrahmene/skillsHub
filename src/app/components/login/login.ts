@@ -1,25 +1,26 @@
 import { Component, inject } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../auth';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
+
 export class Login {
   loginForm = new FormGroup({
-    username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl(''),
   });
   private router = inject(Router);
   private auth = inject(AuthService);
   private snackBar = inject(MatSnackBar);
   login_now() {
-    this.auth.login(this.loginForm.value.username ?? "", this.loginForm.value.password ?? "").subscribe({
+    this.auth.login(this.loginForm.value.email ?? "", this.loginForm.value.password ?? "").subscribe({
       next: res => {
 
         this.auth.saveSes(res?.csrf_token ?? null, res?.user ?? null);

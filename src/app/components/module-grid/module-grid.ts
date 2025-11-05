@@ -1,9 +1,9 @@
 import { Component, inject, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { ModuleContainer } from "../module-container/module-container";
-import { Module } from '../module';
+import { Module } from '../../interfaces/module';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 

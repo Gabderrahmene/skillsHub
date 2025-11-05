@@ -1,8 +1,8 @@
 import { Component, inject, signal, ViewChild } from '@angular/core';
-import { Optionlist } from './optionlist/optionlist';
-import { Dashboard } from "./dashboard/dashboard";
+import { Optionlist } from './components/optionlist/optionlist';
+import { Dashboard } from "./components/dashboard/dashboard";
 import { MatSidenav, MatSidenavModule } from "@angular/material/sidenav";
-import { Sidenav } from './sidenav';
+import { Sidenav } from './services/sidenav';
 import { RouterOutlet } from "@angular/router";
 @Component({
   selector: 'app-root',
