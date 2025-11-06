@@ -3,10 +3,12 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

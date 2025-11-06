@@ -1,0 +1,53 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.case {
+    min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.case1 {
+    min-width: 75px;
+  max-width: 250px;
+  width: 100%;
+}
+td {
+  padding-right: 8px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.button-row{
+   display: flex;
+ margin: auto;
+ align-items: center;
+ flex-direction: column;  
+}
+.border{
+ background: linear-gradient(90deg, coral, orange);
+ width: 40%;
+ height: 60svh;
+ display: flex;
+ margin: auto;
+ margin-top: 10%;
+ align-items: center;
+ flex-direction: column;
+ border-radius: 2%;
+ padding-top:2% ;
+}
+#register{
+    color: white;
+    background-color: black;
+    width:30% ;
+    margin-top: 8%;
+}
