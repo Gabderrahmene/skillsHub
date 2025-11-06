@@ -5,9 +5,10 @@ import { MatSidenav, MatSidenavModule } from "@angular/material/sidenav";
 import { Sidenav } from './services/sidenav';
 import { RouterOutlet } from "@angular/router";
 import { Register } from "./components/register/register";
+import { Login } from "./components/login/login";
 @Component({
   selector: 'app-root',
-  imports: [Optionlist, Dashboard, MatSidenavModule, RouterOutlet, Register],
+  imports: [Optionlist, Dashboard, MatSidenavModule, RouterOutlet, Register, Login],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

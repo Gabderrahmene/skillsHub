@@ -3,7 +3,6 @@
     flex-direction: column;
     background: linear-gradient(90deg, coral, orange);
     height: 40vh;
-    width: 20%;
     margin: auto;
     padding: 5px;
     border-radius: 5px;
@@ -11,6 +10,9 @@
     animation-duration: 3s;
     animation-name: login;
     align-items: center;
+    min-width: 10%;
+    max-width: 25%;
+    width: 100%;
 }
 
 @keyframes login {
@@ -31,6 +33,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;  
+    min-width: 20%;
+    max-width: 30%;
+    width: 100%;
 }
 button{
     width:80%;
@@ -50,12 +55,11 @@ input::placeholder {
     border: none;
     background-color: transparent;
     font-size: 16px;
-    width: 100%;
     align-self: center;
     margin: 0 auto 30px auto;
     display: flex;
     align-items: center;
-    gap: 10px;
+    flex-wrap: wrap;
 }
 
 img {
@@ -67,6 +71,7 @@ img {
 }
 
 .input {
+    outline:none;
     border: solid;
     height: 20%;
     border-color: transparent;
@@ -80,4 +85,7 @@ h3 {
     color: white;
     padding: 5px;
     align-self: center;
+}
+input{
+
 }
