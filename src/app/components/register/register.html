@@ -1,6 +1,6 @@
 <div class="border">
 
-<form class="example-form" [formGroup]="registerForm" >
+  <form class="example-form" [formGroup]="registerForm" (ngSubmit)="register_now()">
     <mat-form-field class="case1" appearance="outline">
       <mat-label>nom</mat-label>
       <input matInput formControlName="nom">
@@ -10,7 +10,6 @@
       <input matInput formControlName="prenom">
     </mat-form-field>
 
-  <p>
     <mat-form-field class="case" appearance="outline">
       <mat-label>email</mat-label>
       <input matInput placeholder="example@gmail.com" formControlName="email">
@@ -19,27 +18,29 @@
       <mat-label>mot de pass</mat-label>
       <input matInput type="password" formControlName="password">
     </mat-form-field>
-  </p>
-<mat-form-field class="case" appearance="outline">
-  <mat-label>Select</mat-label>
-  <mat-select formControlName="niveau">
-    <mat-optgroup label="license">
-    <mat-option value="l1">L1</mat-option>
-    <mat-option value="l2">L2</mat-option>
-    <mat-option value="l3">L3</mat-option>
-    </mat-optgroup>
-    <mat-optgroup label="master">
-    <mat-option value="M1">M1</mat-option>
-    <mat-option value="M2">M2</mat-option>
-    </mat-optgroup>
-    <mat-optgroup label="doctora">
-    <mat-option value="D1">L1</mat-option>
-    <mat-option value="D2">L2</mat-option>
-    </mat-optgroup>
-  </mat-select>
-</mat-form-field>
-<div class="button-row">
-    <button matButton="elevated" id="register">register</button>
+    <mat-form-field class="case" appearance="outline">
+      <mat-label>Select</mat-label>
+      <mat-select formControlName="niveau">
+        <mat-optgroup label="license">
+          <mat-option value="L1">L1</mat-option>
+          <mat-option value="L2">L2</mat-option>
+          <mat-option value="L3">L3</mat-option>
+        </mat-optgroup>
+        <mat-optgroup label="master">
+          <mat-option value="M1">M1</mat-option>
+          <mat-option value="M2">M2</mat-option>
+        </mat-optgroup>
+        <mat-optgroup label="doctorat">
+          <mat-option value="D1">L1</mat-option>
+          <mat-option value="D2">L2</mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+    <div class="button-row">
+      <button matButton="elevated" id="register" type="submit">register</button>
+    </div>
+  </form>
 </div>
-</form>
-</div>
+<button matIconButton (click)="switch()">
+  <mat-icon>compare_arrows</mat-icon>
+</button>

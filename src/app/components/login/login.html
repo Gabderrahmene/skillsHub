@@ -9,8 +9,11 @@
                 <input type="password" required class="input" placeholder="password" formControlName="password"><br>
             </div>
         </div>
-  <div class="submit">
-    <button matButton="elevated" >login</button>
-  </div>
+        <div class="submit">
+            <button matButton="elevated" type="submit">login</button>
+        </div>
     </form>
 </div>
+<button matIconButton (click)="switch()">
+    <mat-icon>compare_arrows</mat-icon>
+</button>

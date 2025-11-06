@@ -1,45 +1,74 @@
-import { Component } from '@angular/core';
-import {ChangeDetectionStrategy,inject, model, signal} from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-import { ErrorStateMatcher, MatOption, MatOptgroup } from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatSelectModule, MatSelect } from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import { MatDividerModule } from '@angular/material/divider';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOption, MatOptgroup } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSelect, MatOption, MatOptgroup, MatButtonModule, MatDividerModule, MatIconModule, ReactiveFormsModule],
+  imports: [MatFormFieldModule, MatInputModule, MatSelect, MatOption, MatOptgroup, MatButtonModule, MatIconModule, ReactiveFormsModule],
   templateUrl: './register.html',
   styleUrls: ['./register.css'],
 })
 
 export class Register {
- registerForm = new FormGroup({
+  registerForm = new FormGroup({
     nom: new FormControl(''),
     prenom: new FormControl(''),
     niveau: new FormControl(''),
     password: new FormControl(''),
     email: new FormControl(''),
   });
-   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  private router = inject(Router);
+  private auth = inject(AuthService);
+  private snackBar = inject(MatSnackBar);
+  switch() {
+    this.router.navigate(["login"]);
+  }
+  register_now() {
+    this.auth.register(this.registerForm.value.nom ?? "", this.registerForm.value.prenom ?? "", this.registerForm.value.niveau ?? "", this.registerForm.value.email ?? "", this.registerForm.value.password ?? "").subscribe({
+      error: err => {
+        if (err.status == 409) {
+          this.snackBar.open("email already in use", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        } else if (err.status == 400) {
+          this.snackBar.open("all informations required", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        } else {
+          this.snackBar.open("man something wrong and i have no idea what it is", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        }
+
+
+      },
+      complete: () => {
+        this.snackBar.open("registering successful", "ok", {
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar'],
+          duration: 3000,
+        });
+        this.router.navigate(["login"]);
+      },
+    });
+  }
 }
