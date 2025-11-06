@@ -3,12 +3,11 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from "@angular/material/icon";
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule,MatButtonModule, MatDividerModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatButtonModule, MatIcon],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -21,11 +20,14 @@ export class Login {
   private router = inject(Router);
   private auth = inject(AuthService);
   private snackBar = inject(MatSnackBar);
+  switch() {
+    this.router.navigate(["register"]);
+  }
   login_now() {
     this.auth.login(this.loginForm.value.email ?? "", this.loginForm.value.password ?? "").subscribe({
       next: res => {
 
-        this.auth.saveSes(res?.csrf_token ?? null, res?.user ?? null);
+        this.auth.saveSes(res?.user ?? null);
       },
       error: err => {
         if (err.status == 400) {

@@ -13,9 +13,10 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post<any>(`${this.base}/login.php`, { email, password }, { withCredentials: true });
   }
-
-  saveSes(csrf: string | null, user: string | null) {
-    if (csrf) localStorage.setItem('csrf_token', csrf);
+  register(nom: string, prenom: string, niveau: string, email: string, password: string,) {
+    return this.http.post<any>(`${this.base}/register.php`, { nom, prenom, email, password, niveau }, { withCredentials: true });
+  }
+  saveSes(user: string | null) {
     if (user) localStorage.setItem('user', user);
   }
 

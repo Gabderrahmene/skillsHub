@@ -12,13 +12,3 @@ function require_login()
     }
     return $_SESSION['user'];
 }
-function require_csrf()
-{
-    $headers = getallheaders();
-    $clientToken = $headers['X-CSRF-Token'] ?? $headers['x-csrf-token'] ?? null;
-    if (!$clientToken || empty($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $clientToken)) {
-        http_response_code(403);
-        echo json_encode(['error' => 'Invalid CSRF token']);
-        exit;
-    }
-}

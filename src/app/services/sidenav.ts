@@ -14,11 +14,6 @@ export class Sidenav {
     return s ? s.toggle() : undefined;
   }
 
-  open(): Promise<MatDrawerToggleResult> | void {
-    const s = this._sidenav();
-    return s ? s.open() : undefined;
-  }
-
   close(): Promise<MatDrawerToggleResult> | void {
     const s = this._sidenav();
     return s ? s.close() : undefined;
