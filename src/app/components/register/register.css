@@ -1,18 +1,20 @@
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+form {
+  min-width: 20svh;
+  max-width: 40svh;
   width: 100%;
 }
 
 .case {
-  min-width: 150px;
-  max-width: 500px;
+  min-width: 20svh;
+  max-width: 50svh;
   width: 100%;
 }
 
 .case1 {
-  min-width: 75px;
-  max-width: 250px;
+  min-width: 15svh;
+  max-width: 40svh;
   width: 100%;
 }
 
@@ -30,7 +32,7 @@ td {
 .border {
   background: linear-gradient(90deg, coral, orange);
   width: 40%;
-  height: 60svh;
+  height: 42svh;
   display: flex;
   margin: auto;
   margin-top: 10%;
@@ -38,6 +40,16 @@ td {
   flex-direction: column;
   border-radius: 2%;
   padding-top: 2%;
+  min-width: 20svh;
+  max-width: 50svh;
+  width: 100%;
+}
+
+#register {
+  color: white;
+  background-color: black;
+  width: 30%;
+  margin-top: 8%;
 }
 
 #register {
