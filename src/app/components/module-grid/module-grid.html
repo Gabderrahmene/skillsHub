@@ -6,7 +6,7 @@
     <div>
         @for (module of modules; track $index) {
         <app-module-container [title]="module.title" [description]="module.description" [size]="module.size"
-            [progress]="module.progress"></app-module-container>
+            [progress]="module.progress ?? 0"></app-module-container>
         }
     </div>
 </section>

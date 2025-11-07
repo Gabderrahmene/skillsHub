@@ -23,7 +23,7 @@ export class ModuleGrid implements OnInit, OnDestroy {
   private snackBar = inject(MatSnackBar);
   private subs = new Subscription();
   private http = inject(HttpClient);
-  private studentId = localStorage.getItem('user');
+  private studentId = Number(localStorage.getItem('user')) ?? 0;
   ngOnInit(): void {
     this.loadModules();
   }
@@ -38,15 +38,23 @@ export class ModuleGrid implements OnInit, OnDestroy {
     const s = this.http.get<any[]>(url, { withCredentials: true }).subscribe({
       next: data => {
         this.modules = (Array.isArray(data) ? data : []).map((m: any) => ({
-          id: m.id_module,
+          id: Number(m.id_module),
           title: m.title ?? '',
+          author: m.author ?? "admin",
           description: m.description ?? "",
           size: m.size != null ? Number(m.size) : 10,
           progress: m.progress != null ? Number(m.progress) : 0,
         }));
       },
       error: err => {
-        if (err.status == 401) {
+        if (err.status == 0) {
+          this.snackBar.open("network error try again", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        } else if (err.status == 401) {
           this.snackBar.open("you are not authentificated", "ok", {
             horizontalPosition: 'right',
             verticalPosition: 'top',
@@ -55,14 +63,21 @@ export class ModuleGrid implements OnInit, OnDestroy {
           });
         }
         else if (err.status == 403) {
-          this.snackBar.open("the id cookie was changed", "ok", {
+          this.snackBar.open("the id was changed", "ok", {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['error-snackbar'],
+            duration: 3000,
+          });
+        } else if (err.status == 405) {
+          this.snackBar.open("wrong method used", "ok", {
             horizontalPosition: 'right',
             verticalPosition: 'top',
             panelClass: ['error-snackbar'],
             duration: 3000,
           });
         } else {
-          this.snackBar.open("man idk", "ok", {
+          this.snackBar.open("your request was unanswered", "ok", {
             horizontalPosition: 'right',
             verticalPosition: 'top',
             panelClass: ['error-snackbar'],

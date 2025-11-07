@@ -11,7 +11,7 @@ if (!$email || !$password) {
 }
 
 
-$stmt = $pdo->prepare("SELECT id_student, password, nom, prenom FROM student WHERE email = ?");
+$stmt = $pdo->prepare("SELECT id_user, password FROM users WHERE email = ?");
 $stmt->execute([$email]);
 $user = $stmt->fetch();
 
@@ -23,10 +23,10 @@ if (!$user || !password_verify($password, $user['password'])) {
 session_regenerate_id(true);
 
 
-$_SESSION['user'] = (int) $user['id_student'];
+$_SESSION['user'] = (int) $user['id_user'];
 $_SESSION['email'] = $email;
-
 
 send_json([
     'user' => $_SESSION['user'],
+    'email' => $_SESSION['email'],
 ]);

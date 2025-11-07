@@ -14,7 +14,7 @@ if ($method === 'GET') {
         send_json(['error' => 'Forbidden'], 403);
     }
 
-    $stmt = $pdo->prepare("SELECT m.id_module, m.title, m.description, COUNT(DISTINCT l.id_lesson) AS size, CONCAT(u.nom, ' ', u.prenom) AS author, p.progress AS progress FROM modules m INNER JOIN progress p ON p.id_module = m.id_module AND p.id_user = ? LEFT JOIN lessons l ON l.id_module = m.id_module INNER JOIN users u ON u.id_user = m.id_user GROUP BY m.id_module, m.title, m.description, u.nom, u.prenom, p.progress");
+    $stmt = $pdo->prepare("SELECT m.id_module, m.title, m.description, COUNT(DISTINCT l.id_lesson) AS size, CONCAT(u.nom, ' ', u.prenom) AS author, CASE WHEN p.id_user IS NULL THEN 0 ELSE 1 END AS joined FROM modules m LEFT JOIN lessons l ON l.id_module = m.id_module LEFT JOIN users u ON u.id_user = m.id_user LEFT JOIN progress p ON p.id_module = m.id_module AND p.id_user = ? GROUP BY m.id_module, m.title, m.description, u.nom, u.prenom;");
     $stmt->execute([$sid]);
     $rows = $stmt->fetchAll();
     send_json($rows);

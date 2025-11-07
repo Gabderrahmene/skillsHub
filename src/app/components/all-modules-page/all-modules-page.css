@@ -1,0 +1,33 @@
+section {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+}
+
+
+h2 {
+    padding: 20px 10px;
+}
+
+mat-card-content {
+    word-break: break-all;
+    height: 3em;
+    overflow: scroll;
+}
+
+@media only screen and (max-width: 1200px) {
+    section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+mat-card {
+    border: 1px solid orange;
+}

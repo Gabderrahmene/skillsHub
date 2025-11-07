@@ -30,7 +30,7 @@ export class Register {
   private auth = inject(AuthService);
   private snackBar = inject(MatSnackBar);
   switch() {
-    this.router.navigate(["login"]);
+    this.router.navigate(["/login"]);
   }
   register_now() {
     this.auth.register(this.registerForm.value.nom ?? "", this.registerForm.value.prenom ?? "", this.registerForm.value.niveau ?? "", this.registerForm.value.email ?? "", this.registerForm.value.password ?? "").subscribe({
@@ -67,7 +67,7 @@ export class Register {
           panelClass: ['success-snackbar'],
           duration: 3000,
         });
-        this.router.navigate(["login"]);
+        this.router.navigate(["/login"]);
       },
     });
   }

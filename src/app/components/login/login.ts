@@ -21,7 +21,7 @@ export class Login {
   private auth = inject(AuthService);
   private snackBar = inject(MatSnackBar);
   switch() {
-    this.router.navigate(["register"]);
+    this.router.navigate(["/register"]);
   }
   login_now() {
     this.auth.login(this.loginForm.value.email ?? "", this.loginForm.value.password ?? "").subscribe({
@@ -56,7 +56,7 @@ export class Login {
 
       },
       complete: () => {
-        this.router.navigate(["homescreen"]);
+        this.router.navigate(["student/homescreen"]);
       },
     });
   }

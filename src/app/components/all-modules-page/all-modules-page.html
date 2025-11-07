@@ -1,0 +1,21 @@
+<section>
+    @for (module of modules; track $index) {
+    <mat-card appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>{{module.title}}</mat-card-title>
+            <mat-card-subtitle>by {{module.author}}<br>{{module.size}} lessons</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{module.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            @if (module.joined) {
+            <button matButton>continue module</button>
+            }
+            @else {
+            <button matButton (click)="joinModule(module.id)">join module</button>
+            }
+        </mat-card-actions>
+    </mat-card>
+    }
+</section>

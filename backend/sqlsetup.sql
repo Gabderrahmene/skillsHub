@@ -1,3 +1,4 @@
-CREATE TABLE student ( id_student INT PRIMARY KEY AUTO_INCREMENT, nom VARCHAR(20), prenom VARCHAR(50), niveau VARCHAR(3), vip BOOLEAN, email VARCHAR(100),password VARCHAR(255));
-CREATE TABLE module( id_module INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(20) , description TEXT, size INT );
-CREATE TABLE progress( id_module INT , FOREIGN KEY (id_module) REFERENCES module(id_module) ON DELETE CASCADE, id_student INT, FOREIGN KEY (id_student) REFERENCES student(id_student) ON DELETE CASCADE, PRIMARY KEY (id_module,id_student), progress INT);
+CREATE TABLE users( id_user INT PRIMARY KEY AUTO_INCREMENT, nom VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, role VARCHAR(7) NOT NULL,email VARCHAR(100) unique NOT NULL,password VARCHAR(255) NOT NULL,points INT);
+CREATE TABLE modules( id_module INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(20) NOT NULL, description TEXT NOT NULL,id_user INT , FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE);
+CREATE TABLE lessons( id_lesson INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(20) NOT NULL, description TEXT NOT NULL,id_module INT , FOREIGN KEY (id_module) REFERENCES modules(id_module) ON DELETE CASCADE);
+CREATE TABLE progress( id_module INT , FOREIGN KEY (id_module) REFERENCES modules(id_module) ON DELETE CASCADE, id_user INT, FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE, PRIMARY KEY (id_module,id_user), progress INT NOT NULL);

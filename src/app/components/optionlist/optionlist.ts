@@ -34,7 +34,7 @@ export class Optionlist {
           panelClass: ['success-snackbar'],
           duration: 3000,
         });
-        this.router.navigate(["login"]);
+        this.router.navigate(["/login"]);
       },
     });
   }

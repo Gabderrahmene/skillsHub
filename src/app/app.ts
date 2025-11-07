@@ -1,21 +1,10 @@
-import { Component, inject, signal, ViewChild } from '@angular/core';
-import { Optionlist } from './components/optionlist/optionlist';
-import { Dashboard } from "./components/dashboard/dashboard";
-import { MatSidenav, MatSidenavModule } from "@angular/material/sidenav";
-import { Sidenav } from './services/sidenav';
+import { Component } from '@angular/core';
 import { RouterOutlet } from "@angular/router";
 @Component({
   selector: 'app-root',
-  imports: [Optionlist, Dashboard, MatSidenavModule, RouterOutlet],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('skillsHub');
-  @ViewChild('sidenav') sidenav?: MatSidenav;
-  Sidenav = inject(Sidenav)
-
-  ngAfterViewInit() {
-    this.Sidenav.setSidenav(this.sidenav ?? null);
-  }
 }

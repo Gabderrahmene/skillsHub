@@ -1,7 +1,9 @@
 export interface Module {
-    id: string;
+    id: number;
     title: string;
-    progress: number;
     size: number;
     description: string;
+    author: string;
+    joined?: boolean;
+    progress?: number;
 }

@@ -12,7 +12,7 @@ $niveau = $body['niveau'] ?? '';
 if (!$email || !$password || !$nom || !$prenom || !$niveau) {
     send_json(['error' => 'all informations required'], 400);
 }
-$stmt = $pdo->prepare("SELECT id_student FROM student WHERE email = ?");
+$stmt = $pdo->prepare("SELECT id_user FROM users WHERE email = ?");
 $stmt->execute([$email]);
 if ($stmt->fetch()) {
     send_json(['error' => 'User exists'], 409);
@@ -20,7 +20,7 @@ if ($stmt->fetch()) {
 
 
 $hash = password_hash($password, PASSWORD_DEFAULT);
-$stmt = $pdo->prepare("INSERT INTO student (nom, prenom, email, password, niveau) VALUES (?, ?, ?, ? ,?)");
+$stmt = $pdo->prepare("INSERT INTO users (nom, prenom, email, password, role, points) VALUES (?, ?, ?, ? ,?,0)");
 $stmt->execute([$nom, $prenom, $email, $hash, $niveau]);
 
-send_json(['id' => (int) $pdo->lastInsertId()], 201);
+send_json(['success' => "user registered successfully"], 201);
