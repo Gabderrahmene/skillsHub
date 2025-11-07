@@ -1,6 +1,6 @@
 <div class="border">
 
-  <form class="example-form" [formGroup]="registerForm" (ngSubmit)="register_now()">
+  <form [formGroup]="registerForm" (ngSubmit)="register_now()">
     <mat-form-field class="case1" appearance="outline">
       <mat-label>nom</mat-label>
       <input matInput formControlName="nom">
@@ -40,8 +40,7 @@
       <button matButton="elevated" id="register" type="submit">register</button>
     </div>
   </form>
-
-</div>
 <button matIconButton (click)="switch()">
   <mat-icon>compare_arrows</mat-icon>
 </button>
+</div>

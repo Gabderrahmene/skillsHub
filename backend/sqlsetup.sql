@@ -1,3 +1,0 @@
-CREATE TABLE student ( id_student INT PRIMARY KEY AUTO_INCREMENT, nom VARCHAR(20), prenom VARCHAR(50), niveau VARCHAR(3), vip BOOLEAN, email VARCHAR(100),password VARCHAR(255));
-CREATE TABLE module( id_module INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(20) , description TEXT, size INT );
-CREATE TABLE progress( id_module INT , FOREIGN KEY (id_module) REFERENCES module(id_module) ON DELETE CASCADE, id_student INT, FOREIGN KEY (id_student) REFERENCES student(id_student) ON DELETE CASCADE, PRIMARY KEY (id_module,id_student), progress INT);
