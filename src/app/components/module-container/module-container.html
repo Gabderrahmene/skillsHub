@@ -9,5 +9,5 @@
         <div class="progress-fill" [style.width.%]="progress()/size() * 100"></div>
     </div>
     <p class="reste">{{progress()}}/{{size()}} </p>
-    <button>continue module</button>
+    <button (click)="enter()">continue module</button>
 </article>

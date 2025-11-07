@@ -1,6 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Module } from '../../interfaces/module';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-module-container',
   imports: [],
@@ -13,7 +13,10 @@ export class ModuleContainer {
   description = input<string>("");
   progress = input<number>(0);
   size = input<number>(10);
-
+  private router = inject(Router);
+ enter(){
+  this.router.navigate(["moduleframe"])
+ }
 }
 function truncate(value: string): string {
   value = value.trim();
