@@ -14,7 +14,7 @@ export class ModuleContainer {
   size = input<number>(10);
   private router = inject(Router);
   enter() {
-    this.router.navigate(["/"])
+    this.router.navigate(["/student/modulepage"]);
   }
 }
 function truncate(value: string): string {

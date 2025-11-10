@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-module',
@@ -9,6 +9,6 @@ import { Router } from '@angular/router';
 export class Module {
   private router = inject(Router);
   affichage() {
-    this.router.navigate(["affichage"])
+    this.router.navigate(["/student/modulepage"]);
   }
 }
