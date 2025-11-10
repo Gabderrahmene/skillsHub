@@ -17,7 +17,9 @@ $stmt->execute([$email]);
 if ($stmt->fetch()) {
     send_json(['error' => 'User exists'], 409);
 }
-
+if ($niveau === "teacher") {
+    send_json(['error' => 'Forbidden'], 403);
+}
 
 $hash = password_hash($password, PASSWORD_DEFAULT);
 $stmt = $pdo->prepare("INSERT INTO users (nom, prenom, email, password, role, points) VALUES (?, ?, ?, ? ,?,0)");

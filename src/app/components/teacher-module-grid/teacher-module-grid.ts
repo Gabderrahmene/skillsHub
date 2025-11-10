@@ -1,20 +1,20 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ModuleContainer } from "../module-container/module-container";
 import { Module } from '../../interfaces/module';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-module-grid',
-  imports: [ModuleContainer],
-  templateUrl: './module-grid.html',
-  styleUrl: './module-grid.css',
+  selector: 'app-teacher-module-grid',
+  imports: [MatCardModule, MatButtonModule],
+  templateUrl: './teacher-module-grid.html',
+  styleUrl: './teacher-module-grid.css',
 })
-export class ModuleGrid implements OnInit, OnDestroy {
+export class TeacherModuleGrid implements OnInit, OnDestroy {
   public modules: Module[] = []
   public loading = false;
   private router = inject(Router);
@@ -33,16 +33,15 @@ export class ModuleGrid implements OnInit, OnDestroy {
 
   loadModules(): void {
     this.loading = true;
-    const url = `${this.base}/module_grid.php?student=${this.studentId}`;
+    const url = `${this.base}/teacher_module_grid.php?prof=${this.studentId}`;
     const s = this.http.get<any[]>(url, { withCredentials: true }).subscribe({
       next: data => {
         this.modules = (Array.isArray(data) ? data : []).map((m: any) => ({
           id: Number(m.id_module),
           title: m.title ?? '',
-          author: m.author ?? "admin",
           description: m.description ?? "",
-          size: m.size != null ? Number(m.size) : 10,
-          progress: m.progress != null ? Number(m.progress) : 0,
+          author: m.author ?? "admin",
+          size: m.size != null ? Number(m.size) : 0,
         }));
       },
       error: err => {
@@ -83,7 +82,7 @@ export class ModuleGrid implements OnInit, OnDestroy {
             duration: 3000,
           });
         }
-        this.router.navigate(["login"]);
+        this.router.navigate(["/login"]);
         this.loading = false;
         this.modules = [];
       },

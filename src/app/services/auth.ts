@@ -16,8 +16,9 @@ export class AuthService {
   register(nom: string, prenom: string, niveau: string, email: string, password: string,) {
     return this.http.post<any>(`${this.base}/register.php`, { nom, prenom, email, password, niveau }, { withCredentials: true });
   }
-  saveSes(user: string | null) {
+  saveSes(user: string | null, role: string | null) {
     if (user) localStorage.setItem('user', user);
+    if (role) localStorage.setItem('role', role);
   }
 
   logout() {

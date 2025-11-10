@@ -4,6 +4,8 @@ import { Homescreen } from './components/homescreen/homescreen';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
 import { StudentLayout } from './components/student-layout/student-layout';
+import { TeacherLayout } from './components/teacher-layout/teacher-layout';
+import { TeacherModuleGrid } from './components/teacher-module-grid/teacher-module-grid';
 
 export const routes: Routes = [
     { path: "login", component: Login },
@@ -14,6 +16,15 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'homescreen', pathMatch: 'full' },
             { path: 'homescreen', component: Homescreen },
+            { path: 'module', component: AllModulesPage }
+        ]
+    },
+    {
+        path: 'teacher',
+        component: TeacherLayout,
+        children: [
+            { path: '', redirectTo: 'homescreen', pathMatch: 'full' },
+            { path: 'homescreen', component: TeacherModuleGrid },
             { path: 'module', component: AllModulesPage }
         ]
     },

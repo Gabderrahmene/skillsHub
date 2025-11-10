@@ -27,7 +27,7 @@ export class Login {
     this.auth.login(this.loginForm.value.email ?? "", this.loginForm.value.password ?? "").subscribe({
       next: res => {
 
-        this.auth.saveSes(res?.user ?? null);
+        this.auth.saveSes(res?.user ?? 0, res?.role ?? "L1");
       },
       error: err => {
         if (err.status == 400) {
@@ -56,7 +56,13 @@ export class Login {
 
       },
       complete: () => {
-        this.router.navigate(["student/homescreen"]);
+        let role = localStorage.getItem('role') ?? "";
+        if (role == "teacher") {
+          this.router.navigate(["teacher/homescreen"]);
+        } else {
+          this.router.navigate(["student/homescreen"]);
+        }
+
       },
     });
   }

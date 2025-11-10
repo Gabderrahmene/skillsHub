@@ -1,4 +1,4 @@
-import { Component, inject, Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Module } from '../../interfaces/module';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';

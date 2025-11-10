@@ -1,0 +1,17 @@
+<h2>all modules created</h2>
+<section>
+    @for (module of modules; track $index) {
+    <mat-card appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>{{module.title}}</mat-card-title>
+            <mat-card-subtitle>{{module.size}} lessons</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{module.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button matButton>edit module</button>
+        </mat-card-actions>
+    </mat-card>
+    }
+</section>
